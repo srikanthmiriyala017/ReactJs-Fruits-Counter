@@ -1,54 +1,49 @@
-// Write your code here
-import {Component} from 'react'
-
+import React, {useState} from 'react'
 import './index.css'
 
-class FruitsCounter extends Component {
-  state = {mango: 0, banana: 0}
+const FruitsCounter = () => {
+  const [mangoCount, setMangoCount] = useState(0)
+  const [bananaCount, setBananaCount] = useState(0)
 
-  ateMango = () => {
-    this.setState(prevState => ({mango: prevState.mango + 1}))
+  const incrementMangoCount = () => {
+    setMangoCount(mangoCount + 1)
   }
 
-  ateBanana = () => {
-    this.setState(prevState => ({banana: prevState.banana + 1}))
+  const incrementBananaCount = () => {
+    setBananaCount(bananaCount + 1)
   }
 
-  render() {
-    const {mango, banana} = this.state
-    return (
-      <div className="bg-container">
-        <div className="main-container">
-          <h1>
-            Bob ate <span className="fruit-text">{mango}</span> mangoes{' '}
-            <span className="fruit-text">{banana}</span> bananas
-          </h1>
-          <div className="fruits-container">
-            <div className="fruit-container">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/mango-img.png"
-                alt="mango"
-                className="fruit-image"
-              />
-              <button type="button" className="button" onClick={this.ateMango}>
-                Eat Mango
-              </button>
+  return (
+    <div className="Bg-container">
+      <div className="inner-container">
+        <h1 className="paragraph">
+          Bob ate {mangoCount} Mangoes {bananaCount} Bananas
+        </h1>
+        <div className="image-container">
+          <div className="img1">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/mango-img.png"
+              alt="mango"
+              className="mango"
+            />
+            <div>
+              <button onClick={incrementMangoCount}>Eat Mango</button>
             </div>
-            <div className="fruit-container">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/banana-img.png"
-                alt="Banana"
-                className="fruit-image"
-              />
-              <button type="button" className="button" onClick={this.ateBanana}>
-                Eat Banana
-              </button>
+          </div>
+          <div className="img1">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/banana-img.png"
+              alt="banana"
+              className="banana"
+            />
+            <div>
+              <button onClick={incrementBananaCount}>Eat Banana</button>
             </div>
           </div>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default FruitsCounter
